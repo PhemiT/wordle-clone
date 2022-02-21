@@ -5,7 +5,8 @@ body {
     background-color: #121213;
     color: #fff;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;    
     text-transform: uppercase;
     font-weight: 600;
 }
@@ -25,8 +26,13 @@ h1 {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 3px;
+    width: 300px;
 }
 
 .tile {
     border: 2px solid #333;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    place-items: center;
 }
