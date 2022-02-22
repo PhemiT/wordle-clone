@@ -8,6 +8,8 @@ document.addEventListener("keydown", (k) => {
     let keypress = k.key
     if (keypress.length == 1 && lettersPattern.test(k.key)) {
         updateLetters(keypress)
+    } else if (k.key == "Backspace" && currentGuess.dataset.letters != "") {
+        deleteLetter()
     }
     
 })
@@ -23,4 +25,15 @@ document.addEventListener("keydown", (k) => {
 const updateTiles = (tileNumber, letter) => {
     let currentTileAlt = document.querySelector("#guessTile" + tileNumber)
     currentTileAlt.innerText = letter;
+}
+
+const deleteLetter = () => {
+    let oldLetters = currentGuess.dataset.letters
+    let newLetters = oldLetters.slice(0, -1)
+    currentGuess.dataset.letters = newLetters
+    clearTile(oldLetters.length)
+}
+
+const clearTile = (tileNumber) => {
+    document.querySelector("#guessTile" + tileNumber).innerText = ""
 }
