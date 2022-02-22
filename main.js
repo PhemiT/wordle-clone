@@ -1,4 +1,4 @@
-const lettersGuide = /^[A-Za-z] [A -Za-z0-9]*$/
+const lettersGuide = /[a-z]/
 
 document.addEventListener("keydown", (k) => {
     console.log("keypress" + k.key)
