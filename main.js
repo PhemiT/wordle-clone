@@ -13,9 +13,14 @@ document.addEventListener("keydown", (k) => {
 })
 
  const updateLetters = (letter) => {
-    currentGuess.dataset.letters += letter
+    let oldLetters = currentGuess.dataset.letters
+    let newLetters = oldLetters + letter
+    let currentTile = newLetters.length
+    currentGuess.dataset.letters = newLetters
+    updateTiles(currentTile, letter)
 }
 
-const updateTiles = () => {
-
+const updateTiles = (tileNumber, letter) => {
+    let currentTileAlt = document.querySelector("#guessTile" + tileNumber)
+    currentTileAlt.innerText = letter;
 }

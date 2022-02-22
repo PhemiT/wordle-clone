@@ -36,4 +36,7 @@ h1 {
     display: flex;
     place-items: center;
     margin-bottom: 5px;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
 }
