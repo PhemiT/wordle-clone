@@ -23,7 +23,7 @@ document.addEventListener("keydown", (k) => {
     } else if (k.key == "Enter" && currentGuess.dataset.letters.length == 5) {
         submitGuess()
         for ( let i=0; i < 5; i++) {
-            revealTile(checkLetter(i))
+            revealTile(i, checkLetter(i))
         }
     }
     
@@ -69,6 +69,12 @@ const checkLetterExists = (letter) => {
 
 }
 
-const revealTile = (status) => {
+const revealTile = (i, status) => {
+    switch(status) {
+        case "correct":
 
+        case "present":
+
+        case "absent":
+    }
 }

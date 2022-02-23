@@ -40,3 +40,15 @@ h1 {
     align-items: center;
     font-size: 30px;
 }
+
+.correct {
+    background-color: rgb(16, 184, 16);
+}
+
+.present {
+    background-color: yellow;
+}
+
+.absent {
+    background-color: grey;
+}
