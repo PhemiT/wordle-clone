@@ -69,15 +69,23 @@ const checkLetterExists = (letter) => {
     return gameWord.includes(letter)
 }
 
-const revealTile = (i, status) => {
+const revealTile = (i, state) => {
     let tileNum = i + 1
     let tile = document.querySelector("#guessTile" + tileNum)
     
-    if (status == "correct") {
+    /* if (state == "correct") {
         tile.classList.add("correct")
-    } else if (status == "present") {
+    } else if (state == "present") {
         tile.classList.add("present")
-    } else if (status == "absent") {
+    } else if (state == "absent") {
         tile.classList.add("absent")
-    }
+    } */
+    flipTile(tileNum,state)
+}
+
+const flipTile = (tileNum,state) => {
+    let tile = document.querySelector("#guessTile" + tileNum)
+    tile.classList.add("flip-in")
+    tile.classList.add(state)
+    tile.classList.add("flip-out")
 }
