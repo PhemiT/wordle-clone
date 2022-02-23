@@ -16,6 +16,7 @@ const submitGuess = () => {
 document.addEventListener("keydown", (k) => {
     console.log("keypress" + k.key)
     let keypress = k.key
+    chooseWord()
     if (keypress.length == 1 && lettersPattern.test(k.key) && currentGuess.dataset.letters.length < 5) {
         updateLetters(keypress)
     } else if (k.key == "Backspace" && currentGuess.dataset.letters != "") {
@@ -66,15 +67,17 @@ const checkLetter = (position) => {
 
 const checkLetterExists = (letter) => {
     return gameWord.includes(letter)
-
 }
 
 const revealTile = (i, status) => {
-    switch(status) {
-        case "correct":
-
-        case "present":
-
-        case "absent":
+    let tileNum = i + 1
+    let tile = document.querySelector("#guessTile" + tileNum)
+    
+    if (status == "correct") {
+        tile.classList.add("correct")
+    } else if (status == "present") {
+        tile.classList.add("present")
+    } else if (status == "absent") {
+        tile.classList.add("absent")
     }
 }
