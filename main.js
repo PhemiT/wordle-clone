@@ -24,7 +24,9 @@ document.addEventListener("keydown", (k) => {
     } else if (k.key == "Enter" && currentGuess.dataset.letters.length == 5) {
         submitGuess()
         for ( let i=0; i < 5; i++) {
-            revealTile(i, checkLetter(i))
+            setTimeout(() => {
+                revealTile(i, checkLetter(i))   
+            }, i* 200 );
         }
     }
     
@@ -86,6 +88,12 @@ const revealTile = (i, state) => {
 const flipTile = (tileNum,state) => {
     let tile = document.querySelector("#guessTile" + tileNum)
     tile.classList.add("flip-in")
-    tile.classList.add(state)
-    tile.classList.add("flip-out")
+    setTimeout(() => {
+        tile.classList.add(state)
+    }, 100);
+    
+    setTimeout(() => {
+        tile.classList.add("flip-out")     
+    }, 200);
+   
 }
