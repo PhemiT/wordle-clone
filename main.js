@@ -11,10 +11,6 @@ const chooseWord = () => {
 }
 chooseWord()
 
-const submitGuess = () => {
-
-}
-
 document.addEventListener("keydown", (k) => {
     console.log("keypress" + k.key)
     let keypress = k.key
@@ -24,15 +20,35 @@ document.addEventListener("keydown", (k) => {
     } else if (k.key == "Backspace" && currentGuess.dataset.letters != "") {
         deleteLetter()
     } else if (k.key == "Enter" && currentGuess.dataset.letters.length == 5) {
-        submitGuess()
-        for ( let i=0; i < 5; i++) {
-            setTimeout(() => {
-                revealTile(i, checkLetter(i))   
-            }, i* 200 );
-        }
+        submitGuess() 
+        
     }
-    
+      
 })
+
+const submitGuess = () => {
+    for ( let i=0; i < 5; i++) {
+        setTimeout(() => {
+            revealTile(i, checkLetter(i))   
+        }, i* 200 );
+    }
+}
+
+const checkWin = () => {
+    if(gameWord == currentGuess.dataset.letters) {
+        console.log("Game is won!")
+    } else {
+        currentGuessCount++
+    }
+}
+console.log(gameWord)
+const guessComplete = (i) => {
+    if(i == 4) {
+        checkWin()
+    } else {
+        console.log("not yet")
+}
+}
 
  const updateLetters = (letter) => {
     let oldLetters = currentGuess.dataset.letters
@@ -43,7 +59,7 @@ document.addEventListener("keydown", (k) => {
 }
 
 const updateTiles = (tileNumber, letter) => {
-    let currentTileAlt = document.querySelector("#guessTile" + tileNumber)
+    let currentTileAlt = document.querySelector("#guess" + currentGuessCount + "Tile" + tileNumber)
     currentTileAlt.innerText = letter;
     currentTileAlt.classList.add("has-letter")
 }
@@ -56,7 +72,7 @@ const deleteLetter = () => {
 }
 
 const clearTile = (tileNumber) => {
-    let currentTile = document.querySelector("#guessTile" + tileNumber)
+    let currentTile = document.querySelector("#guess" + currentGuessCount + "Tile" + tileNumber)
     currentTile.innerText = ""
     currentTile.classList.remove("has-letter")
 }
@@ -78,20 +94,14 @@ const checkLetterExists = (letter) => {
 
 const revealTile = (i, state) => {
     let tileNum = i + 1
-    let tile = document.querySelector("#guessTile" + tileNum)
-    
-    /* if (state == "correct") {
-        tile.classList.add("correct")
-    } else if (state == "present") {
-        tile.classList.add("present")
-    } else if (state == "absent") {
-        tile.classList.add("absent")
-    } */
+    let tile = document.querySelector("#guess" + currentGuessCount + "Tile" + tileNum)
     flipTile(tileNum,state)
-}
+    guessComplete(i)
+    }
+
 
 const flipTile = (tileNum,state) => {
-    let tile = document.querySelector("#guessTile" + tileNum)
+    let tile = document.querySelector("#guess" + currentGuessCount + "Tile" + tileNum)
     tile.classList.add("flip-in")
     setTimeout(() => {
         tile.classList.add(state)
