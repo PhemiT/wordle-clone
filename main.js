@@ -1,3 +1,4 @@
+
 const lettersPattern = /[a-z]/
 let currentGuessCount = 1
 let currentGuess = document.querySelector("#guess" + currentGuessCount)
@@ -8,6 +9,7 @@ const chooseWord = () => {
     gameWord = words[Math.floor(Math.random()*5)]
     return gameWord
 }
+chooseWord()
 
 const submitGuess = () => {
 
@@ -16,7 +18,7 @@ const submitGuess = () => {
 document.addEventListener("keydown", (k) => {
     console.log("keypress" + k.key)
     let keypress = k.key
-    chooseWord()
+    
     if (keypress.length == 1 && lettersPattern.test(k.key) && currentGuess.dataset.letters.length < 5) {
         updateLetters(keypress)
     } else if (k.key == "Backspace" && currentGuess.dataset.letters != "") {
@@ -43,6 +45,7 @@ document.addEventListener("keydown", (k) => {
 const updateTiles = (tileNumber, letter) => {
     let currentTileAlt = document.querySelector("#guessTile" + tileNumber)
     currentTileAlt.innerText = letter;
+    currentTileAlt.classList.add("has-letter")
 }
 
 const deleteLetter = () => {
@@ -53,7 +56,9 @@ const deleteLetter = () => {
 }
 
 const clearTile = (tileNumber) => {
-    document.querySelector("#guessTile" + tileNumber).innerText = ""
+    let currentTile = document.querySelector("#guessTile" + tileNumber)
+    currentTile.innerText = ""
+    currentTile.classList.remove("has-letter")
 }
 
 const checkLetter = (position) => {

@@ -41,14 +41,18 @@ h1 {
     font-size: 30px;
 }
 
+.has-letter {
+    border-color: rgb(182, 178, 178);
+}
+
 .correct {
     background-color: rgb(16, 184, 16);
     border-color: rgb(16, 184, 16);
 }
 
 .present {
-    background-color: yellow;
-    border-color: yellow;
+    background-color: rgb(214, 214, 16);
+    border-color: rgb(214, 214, 16);
 }
 
 .absent {
@@ -83,3 +87,4 @@ h1 {
     animation: flip-out 500ms;
     animation-fill-mode: forwards;
 }
+
