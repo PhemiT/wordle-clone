@@ -39,6 +39,7 @@ const checkWin = () => {
         console.log("Game is won!")
     } else {
         currentGuessCount++
+        currentGuess = document.querySelector("#guess" + currentGuessCount)
     }
 }
 console.log(gameWord)
@@ -108,7 +109,11 @@ const flipTile = (tileNum,state) => {
     }, 100);
     
     setTimeout(() => {
-        tile.classList.add("flip-out")     
+        tile.classList.remove("flip-in")
+        tile.classList.add("flip-out")    
     }, 200);
+    setTimeout(() => {
+        tile.classList.remove("flip-out")  
+    }, 1500);
    
 }
