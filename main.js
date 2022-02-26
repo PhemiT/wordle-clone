@@ -34,6 +34,15 @@ const submitGuess = () => {
     }
 }
 
+/* const jumpTiles = () => {
+    for(i = 0; i < 5; i++) {
+        setTimeout(() => {
+        document.querySelector("#guess" + currentGuessCount + "Tile" + (i + 1)).classList.add("jump-animation")
+        }, i * 200);
+        
+    }
+}
+ */
 const checkWin = () => {
     if(gameWord == currentGuess.dataset.letters) {
         console.log("Game is won!")
